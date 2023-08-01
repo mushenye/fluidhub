@@ -1,0 +1,25 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Schools{%endblock title%}
+{%block main-content%}
+<div class="container">
+ 
+
+ {% for item in subjects%}
+ <div class="row my-3">
+        {{item.date_created}}
+        {{item.student.fullname}}
+        {{item.term}}
+        {{item.grade}}
+        {{item.exam}}
+       {{item.subject}}
+       {{item.marks}}
+      
+    
+</div>
+   <hr>
+ {% endfor %}
+
+ </div>
+
+ {%endblock main-content%}

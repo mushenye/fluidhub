@@ -1,0 +1,66 @@
+
+{% extends 'learner/base.html'%}
+{% load crispy_forms_tags %}
+{%block main-content%}
+
+<div class="container">
+  <hr>
+  <h4>      
+        {{student.fullname.capitalize}}
+        <a href="{% url 'studentdetails' student.id %}" class="btn btn-info btn-sm">learner details</a>
+        <h4>
+  <hr>
+        <div class="row">
+                <div class="col-sm-2 p-2">
+
+                </div>
+                <div class="col-sm-4 p-2" style="background-color:lavender; border-radius: 10px;">
+                        <div   class="form-control border-info p-2 ">
+                           <p> If the results are avaliable DO NOT ADD </p>
+                        </div>
+
+                        {% for score in result%}
+
+                        <h3> {{ score.year}}</h3>
+                       <a href= "{% url 'result' score.student.id%}" > 
+                       {{ forloop.counter}}.  {{ score.term}} /
+                        {{ score.exam}} </a>
+                        <a href="{% url 'score_update' score.id %}" class="btn btn-info btn-sm">Edit score</a>
+
+                        {% empty%}
+                        <h4> No result available</h4>
+                        {% endfor %}
+                            
+
+                
+                </div>
+                <div class="col-sm-4">
+                        <div   class="form-control border-info ">
+                                <div>
+                                    <form method= "post">
+                                    {% csrf_token %}
+                                            {{form|crispy}}
+                                </div>
+                                        <div class="m-3">
+                                        <input type="submit" class="btn btn-primary" value="Save">
+                                        </div>
+                        
+                                    </form>
+                        
+                        
+                                </div>
+
+
+
+                </div>
+                <div class="col-sm-2 p-2">
+
+                </div>
+        </div>
+
+
+
+        
+</div>
+
+{%endblock main-content%}

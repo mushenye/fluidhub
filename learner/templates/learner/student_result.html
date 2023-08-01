@@ -1,0 +1,39 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Student results{%endblock title%}
+
+{%block main-content%}
+<div class="container">
+
+<a href="/term_one_opener" class="btn btn-primary">Opener Exam</a>
+<a href="/term_one_mid_term" class="btn btn-primary">Mid term Exam</a>
+<a href="/term_one_end_term" class="btn btn-primary">Endterm</a>
+
+<table class="table">
+  <tr>
+    
+    <th scope="col">NAME</th>
+    <th scope="col">SUBJECT</th>
+    <th scope="col">SCORE</th>
+    <th scope="col">COMMENT</th>
+   
+  </tr>
+  
+{% for result in results %}
+  <tr>
+
+    {% comment %} <td scope="row"><a href= "{% url 'report' student.id %} ">{{result.student.fullname.capitalize}} </a></td> {% endcomment %}
+
+    <td scope="row"><a href= "#">{{result.student.fullname.capitalize}} </a></td>
+    <td scope="row">{{result.subject}}</td>
+    <td scope="row">{{result.marks}}</td>
+    <td scope="row">{{result.comment}}</td>
+ 
+  </tr>
+{% empty%}
+ <h1> No results available </h1>
+ {% endfor %} 
+</table>
+</div>
+
+{% endblock main-content%}

@@ -1,0 +1,100 @@
+
+ 
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}student view{%endblock title%}
+{%block main-content%}
+<div class="container">
+
+      <div class=" card col-sm">
+
+            
+            <h2> Learners Record </h2>
+
+            <h2>{% for x in my_school %}{{x.school_name.capitalize}} </h2>
+<hr>
+             <h6>
+              <a href="{% url 'profile' x.school_code %}" class="btn btn-primary btn-sm">School Profile</a>
+
+              <a href="{% url 'add_student' x.school_code %}" class="btn btn-primary btn-sm">Add student</a> </h6>
+<hr>
+            {% endfor %}   
+          <div class="card text-center">
+              <div class="card-header text-info">
+                  <form action = "" method = "post">
+
+                    {% csrf_token%}
+                        <div class="btn-toolbar text-infor text-center well" >
+                            <button class="btn btn-light btn-sm" value= "ALL" name="ALL" type="submit">View all</button>
+                            <button class="btn btn-light btn-sm" value= "RE" name="RE" type="submit">Reception</button>
+                            <button class="btn btn-light btn-sm" value= "P1" name="P1" type="submit">Pre-primary 1</button>
+                            <button class="btn btn-light btn-sm" value= "P2" name="P2" type="submit">Pre-primary 2</button>
+                            <button class="btn btn-light btn-sm" value= "G1" name="G1" type="submit">Grade 1</button>
+                            <button class="btn btn-light btn-sm" value= "G2" name="G2" type="submit">Grade 2</button>
+                            <button class="btn btn-light btn-sm" value= "G3" name="G3" type="submit">Grade 3</button>
+                            <button class="btn btn-light btn-sm" value= "G4" name="G4" type="submit">Grade 4</button>
+                            <button class="btn btn-light btn-sm" value= "G5" name="G5" type="submit">Grade 5</button>
+                            <button class="btn btn-light btn-sm" value= "G6" name="G6" type="submit">Grade 6</button>
+                        </div>
+
+                  </form>
+
+
+              </div>
+
+            </div>
+              <small class="text-danger">   Please click on name to view details of the student</small>
+
+                      <div class="table-responsive">
+                            <table class=" table table-sm">
+                            
+
+
+                              <tr>
+                                
+                                <th>S/No</th>
+                                <th >Name</th>
+                                {% comment %} <th scope="col">Adm No.</th>
+                                <th scope="col">Birth Date</th>
+                                <th scope="col">Date joined</th>
+                                <th scope="col">Grade</th> {% endcomment %}
+                                <th scope="col"> Update </th>
+                              </tr>
+
+
+                              
+                            {% for student in students %}
+                              
+
+                              
+                              <tr>
+
+                              
+                                <td> {{forloop.counter}}</td>
+                                <td scope="row"><a href= "{% url 'studentdetails' student.id %} " class="text-decoration-none">{{student.fullname.capitalize}} </a></td>
+                                {% comment %} <td scope="row">{{student.adm_no}}</td>
+                                <td scope="row">{{student.date_of_birth}}</td>
+                                <td scope="row">{{student.date_joined}}</td>
+                                <td scope="row">{{student.grade}}</td> {% endcomment %}
+                                <td scope="row"><a href="{% url 'student_update' student.id %}" class="btn btn-dark btn-sm"><i class="bi bi-unindent"></i></a></td>
+                              </tr>
+                              
+
+
+                
+                {% endfor %}
+
+                </table>
+            </div>
+
+</div>
+</div>
+
+
+
+
+
+
+{%endblock main-content%}
+
+

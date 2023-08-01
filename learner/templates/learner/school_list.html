@@ -1,0 +1,18 @@
+ 
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Schools{%endblock title%}
+{%block main-content%}
+<div class="container">
+ 
+ 
+ {%for school in schools%}
+ <div class="row my-3">
+ <a href= " {{school.school_code}}" >{{school.school_name.capitalize}}<a/>
+</div>
+   <hr>
+ {%endfor%}
+
+ </div>
+
+ {%endblock main-content%}

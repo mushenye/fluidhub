@@ -1,0 +1,116 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block main-content%}
+<div class="container">
+<h4> Send us message<h4>
+
+<section id="contact" class="contact">
+  <hr>
+<div class="row">
+      <div class= "col-sm-3">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="info-box">
+              <i class="bx bx-share-alt"></i>
+              <h3>Social Profiles</h3>
+              <div class="social-links">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="info-box mt-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email us</h3>
+              <p>simanitechnologies@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="info-box mt-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call us</h3>
+              <p>0718776232/ 0780856795</p>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+     
+
+
+
+
+
+
+      </div>
+
+
+      <div class= "col-sm-6 mb-3 ">
+              <div   class="form-control border-info mb-3 ">
+            
+                  <form method= "post">
+                  <div class= "shadow  p-3">
+                  {% csrf_token %}
+                  {{form|crispy }}      
+                  </div>
+                      <div class="m-3">
+                      <input type="submit" class="btn btn-primary" value="Send">
+                      </div>
+                  </form>
+                </div>
+        </div>
+
+  
+      
+  <div class="col-sm-3" style="border-radius:10px; text-style:none;">
+    <div class="info-box mt-4">
+
+    <img   src="{% static 'learner/images/logo.png' %}" style= "width:150px;">
+    
+    </div>
+    <div class="info-box mt-4 p-3 ">
+      <strong>Simani Communication Technologies </strong>
+       <div class= "card border-info ">
+         <h5> We are full stack developers </h5>
+       
+          <h6> Web developers</h6>
+          <h6> Web maintanace </h6>
+          <h6> Mobile applications </h6>
+
+       </div >
+     
+      </div>
+  </div>
+  
+ 
+
+</div>
+
+
+
+
+
+
+
+
+</section>
+    
+</div>
+
+
+
+
+
+
+
+{%endblock main-content%}

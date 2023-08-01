@@ -1,0 +1,65 @@
+
+{% extends 'learner/base.html'%}
+
+{%block main-content%}
+<div class="container">
+        <div class=" card col-sm">
+              <h3> Learner Achivement</h3>
+              <hr>
+               <h4> {{student.fullname.capitalize}}</h4>
+                <a href="#"class="card-link"></a>
+
+              <h6> 
+                <a href="{% url 'studentdetails' student.id %}" class="btn btn-primary btn-sm">Learner detail</a>
+
+                <a href="{% url 'assess' student.id %}" class="btn btn-primary btn-sm">Create Assesment</a>
+                    
+              </h6>
+          <div class="card text-center">
+
+                
+          </div>
+        <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  
+                
+                  <th scope="col">STRAND</th>
+                  <th scope="col">EXPECTATION</th>
+                  <th scope="col">COMMENT</th>
+
+                </tr>
+                
+          
+
+
+
+              {% for as in asses %}
+           
+              
+              <td scope="row"></td>
+                <tr>
+                  
+      
+                  <td scope="row">{{as.strand}} 
+                    
+                  <p>{{as.sub_strand1}}</p>
+                
+                  <td scope="row">{{as.expectation}}</td>
+                  <td scope="row">{{as.comment}}</td>
+                
+                </tr>
+
+              {% endfor %}
+
+              </table>
+          </div>
+          </div>
+</div>
+
+
+
+
+{%endblock main-content%}
+
+

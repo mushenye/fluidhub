@@ -1,0 +1,18 @@
+{% extends 'learner/base.html'%}
+{% load crispy_forms_tags %}
+{%block main-content%}
+
+<div class="container">
+
+<hr>
+
+<h3> Are you sure you want to delete ?</h3>
+
+<a href="{% url 'teacherview' teacher.id %}" class="btn btn-success btn-sm">Go back</a>
+<a href="{% url 'teacherdelete' teacher.id  %}" class="btn btn-danger btn-sm">Delete</a>
+
+
+
+</div>
+
+{%endblock main-content%}

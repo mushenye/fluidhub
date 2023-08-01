@@ -1,0 +1,36 @@
+
+
+{% extends 'learner/base.html'%}
+{% load crispy_forms_tags %}
+{%block main-content%}
+
+<div class="container">
+<h4>  Add Learner<h4>
+<hr>
+<a href="{% url 'school_view' my_school.school_code %}" class="btn btn-primary btn-sm">Learner record</a>
+
+<hr>
+<div class= "col-sm-4 mb-3 ">
+        <div   class="form-control border-info ">
+        <div>
+            <form method= "post">
+            {% csrf_token %}
+                    {{form|crispy}}
+        </div>
+                <div class="m-3">
+                <input type="submit" class="btn btn-primary" value="Save">
+                </div>
+
+            </form>
+
+
+            </div>
+</div>
+
+
+</div>
+
+
+
+
+{%endblock main-content%}

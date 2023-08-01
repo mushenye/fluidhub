@@ -1,0 +1,20 @@
+{% extends 'learner/base.html'%}
+{% load crispy_forms_tags %}
+{%block main-content%}
+
+<div class="container">
+    <h3> Add Club </h3>
+<a href="#" class="btn btn-primary">Go Back</a>
+
+<form method= "post">
+{% csrf_token %}
+        {{form|crispy }}
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</table>
+</div>
+
+
+
+
+{%endblock main-content%}

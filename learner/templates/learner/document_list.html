@@ -1,0 +1,60 @@
+
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block main-content%}
+
+<h3> Document</h3>
+           
+
+<div class="container">
+    <button data-page ="page1"class="btn btn-light btn-sm" value= "ALL" name="ALL" type="submit">Fee Structure</button>
+    <button data-page ="page2"class="btn btn-light btn-sm" value= "ALL" name="ALL" type="submit">Exams</button>
+    <button data-page ="page3"class="btn btn-light btn-sm" value= "ALL" name="ALL" type="submit"> Lesson plan</button>
+    <button data-page ="page4"class="btn btn-light btn-sm" value= "ALL" name="ALL" type="submit"> Schemes</button>
+
+   
+        <div class=" card col-sm">
+                
+    
+            <table class="table">    
+
+                <tr>
+                  <th scope="col">S/NO.</th>
+                  <th scope="col">Date created</th>
+                  <th scope="col">School</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Download</th>
+
+                </tr> 
+                
+    
+                {% for document in documents %}
+
+                <tr>
+                  <td> {{forloop.counter}}</td>
+                  <td scope="row">{{document.date_created}}  </td>           
+                  <td scope="row">{{document.school.school_name.capitalize }}</td>
+                  <td scope="row">{{document.title.capitalize}}</td>
+                  <td scope="row"><a href="{% url 'download' document.id %}"><i class="bi bi-box-arrow-in-down"></i></a></td>
+                
+                
+                </tr>
+            
+                {% empty %}
+                No documents found.
+
+                     {% endfor %}
+
+            </table>
+             
+        
+          </div>
+</div>
+
+{%endblock main-content%}
+
+
+
+
+        
+       

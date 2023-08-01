@@ -1,0 +1,83 @@
+
+{%extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Home{%endblock title%}
+
+{%block main-content%}
+<div class="container">
+  <section id="contact" class="contact">
+
+ <hr>
+ <p>  <a class="btn btn-primary btn-sm " href="{% url 'pass' %}"> School</a>
+  <a href="{% url 'school_register'%}" class="btn btn-primary btn-sm">Register</a>
+
+  <a class="btn btn-primary btn-sm " href="{% url 'activities' %}"> Activity</a>
+ <a class="btn btn-primary btn-sm " href="{% url 'galleryview' %}"> Gallery</a>
+
+</p>
+
+
+ <hr>        
+              
+      
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="info-box mt-4">
+
+        <img   src="{% static 'learner/images/logo.png' %}" style= "width:150px;">
+        
+        </div>
+
+      <div class="info-box mt-4 p-3 ">
+
+       <h4> <strong>Simani Communication Technologies </strong></h4>
+         <div class= "card border-info ">
+           <h5> We are full stack developers </h5>
+         
+            <h6> We develope and 
+              maintanace website
+             </h6>
+  
+         </div >
+       
+        </div>
+    </div>
+    <div class="col-sm-8">
+
+      <!-- Masthead-->
+      <header class="masthead text-dark">
+
+        <div class="container">
+            <div class="masthead-subheading">School management system </div>
+            <div class="masthead-heading text-uppercase">welcome</div>
+            <a class="btn btn-primary btn-xl " href="{% url 'contactus' %}">Tell us your compliments or grivances</a>
+        </div>
+      </header>
+      <!-- Services-->
+
+    </div>
+    
+  </div>
+
+  
+
+
+</section>
+
+
+
+
+
+
+</div>
+{% include "learner/footer.html" %}
+{%endblock main-content%}
+
+{% include "footer.html" %}
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+{%extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Your passcode {%endblock title%}
+
+{%block main-content%}
+<div class="row my-3">
+    <div class="col-sm-6 offset-sm-3">
+
+        {% for item in schoolcode %}
+        <h3>{{item.school_name}}</h3>
+        <h1>{{item.passcode}}</h1>
+        <hr>
+       {% endfor%}
+
+       " Donot Exit this page before saving the code"
+        {% for scho in school %}
+            <p>{{forloop.counter}}{{scho.school_name}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{%endblock main-content%}

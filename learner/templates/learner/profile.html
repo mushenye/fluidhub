@@ -1,0 +1,278 @@
+
+{% extends 'learner/base.html'%}
+{% load static%}
+{%block main-content%}
+
+<div class="container">
+
+  <hr>
+  <a href="{% url 'home'%}" class="btn text-info btn-sm">Go back</a>
+  <a href="{% url 'message'%}" class="btn text-info btn-sm">Send Message</a>
+  <a href="{% url 'upload' my_school.school_code%}" class="btn text-info btn-sm">Documents</a>
+  <a href="{% url 'documentlist'%}" class="btn text-info btn-sm">Downloads</a>
+
+  <a href= "{% url 'school_view' my_school.school_code %}" class="text-decoration-none btn btn-light btn-sm" ><strong>View Records</strong><a/>
+
+  <hr>
+
+{% for item in profile%}
+<section class="h-100 gradient-custom-2">
+  <div class="container py-1 h-100">
+   <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-12 ">
+
+
+        <div class="card">
+                              <div class="rounded-top text-success d-flex flex-row border-info" style="background-color: dark; height:80px;">
+                                
+                                <div class="ms-2 mt-5 d-flex flex-column" style="width: 150px;">
+
+                                          <img src= "{{item.school_logo.url}}"
+                                            alt="Logo" class="img-fluid img-thumbnail mt-4 mb-2" style=" z-index: 1">
+                                        
+                              
+                                        </div>
+                                        <div class="ms-3" style="margin-top: 10px;">
+                                          <h2>{{item.school.school_name.capitalize}}</h2>
+
+                                          <a href="{% url 'editprofile' item.id %}" class="btn text-info btn-sm">Edit profile</a>
+
+                                          {% comment %} <p>{{county}}</p> {% endcomment %}
+                                        </div>
+                              </div>
+                                      <div class="p-4 text-black" style="margin-top: 20px; background-color: #f8f9fa;">
+                                        
+                                        <div class="d-flex justify-content-end text-center py-1">
+                                          
+                                                  <div>
+                                                    <p class="mb-1 h5">100</p>
+                                                    <p class="small text-muted mb-0">Students</p>
+                                                  </div>
+                                                    <div class="px-1">
+                                                      <p class="mb-1 h5">{{tech}}</p>
+                                                      <p class="small text-muted mb-0">Teachers</p>
+                                                    </div>
+                                                 
+                                        </div>
+                                      </div>
+                                      <div class="card-body p-10 text-black">
+                                              <div class="mb-1">
+                                                <h3>About us</h3>
+                                                        <div class="p-1" style="background-color: #f8f9fa;">
+                                                    
+                                                          <small class="font-italic mb-1">{{item.about}}</small>
+                                                      
+                                                        </div>
+                                                        <hr>
+                                                     
+                                                
+                                            {% empty %}
+                                              <h3> Add school profile</h3>  
+                                                  <h4> NO profile added   <a href="{% url 'myprofile' my_school.school_code %}" class="btn btn-primary btn-sm">Add profile</a>
+                                          {% endfor %}
+
+                                          <h3>Contact us                                           
+                                            <a href="{% url 'contact' my_school.school_code %}" class="btn text-info btn-sm">Add contact</a>
+                                          </h3> 
+                                            <hr>
+
+                                       
+                    
+                                            
+                                    </table>
+                                </div>
+
+
+                                <div class="table-responsive">
+                                  <table class=" table table-sm">
+
+                                              {% for item in contact %}
+
+                                              <a href="{% url 'updatecontact' item.id %}" class="btn text-info btn-sm">Update contact</a>
+                                            
+          
+                                                  <tr>
+                                                    <td scope="row">Phone Number:</td>
+                                                    <td scope="row">{{item.phone_number}}</td>
+                                                  </tr>
+                    
+                                                  <tr>
+                                                    <td scope="row"> Mobile Number:</td>
+                                                    <td scope="row">{{item.mobile_number}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td scope="row"> Email:</td>
+                                                    <td scope="row">{{item.email}}</td>
+                                                  </tr>
+
+                                                  <tr>
+                                                    <td scope="row"> Physical address:</td>
+                                                    <td scope="row">{{item.physical_address}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td scope="row"> Pin Location:</td>
+                                                    <td scope="row">{{item.pin_location}}</td>
+                                                  </tr>
+
+                                                  {% empty%}
+                                              <h2>No contact added</h2>
+                                              {% endfor %}
+                    
+                                    </table>
+                                </div>
+                                          
+                                              
+                                        
+
+          
+        </div>
+      </div>
+
+          {% comment %} ++teachers display  +++ {% endcomment %}
+      <hr>
+      <h3>Our teachers     <a href="{% url 'teacheradd' my_school.school_code %}" class="btn text-info btn-sm">Add Teacher</a>
+      </h3>  
+      
+          <div class="row row-cols-1 row-cols-md-4 g-2">
+                            
+            {% for item in teacher %}
+            <div class="col">
+              <div class="card">
+                <a href= "{% url 'teacherview' item.id %}">
+                <img src="{{ item.image.url}}" class="card-img-top " style='height: 200px; width: 100%; object-fit: contain'
+                  alt="Hollywood Sign on The Hill" />
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.first_name}} {{ item.last_name}}</h5>
+                    <p> {{item.grade}} </p>
+                          <hr>
+
+                                {% comment %} <div class="d-flex justify-content-start align-items-center">
+                                      
+                                        <p class="small mb-0"><i class="far fa-star fa-lg"></i> Photo taken on {{item.date_created}} </p>
+                                        <span class="ms-1 me-4">|</span>
+
+                                      <p class="mb-0 text-capitalize"><i class="fas fa-cog me-2"></i> <strong
+                                          class="text-muted small"> {{item.school.school_name.capitalize}} </strong></p>
+                              
+                                        <span class="ms-1 me-3">|</span>
+                                      
+                                      {% comment %} <a href="#!">
+                                        <img src="#" alt="avatar"
+                                          class="img-fluid rounded-circle me-3" width="35">
+                                      </a> 
+                                        <p class="mb-0"><a href="{% url 'gallery' item.school.school_code  %}" class="text-muted">View gallery</a></p>
+
+                                 </div>  {% endcomment %}  
+                </div>           
+
+                              
+                         
+              </div>
+              </div>
+
+              {% endfor%}
+            </div>
+
+  </div>
+
+  <hr>
+  <h3> School Clubs 
+  
+  <a href="{% url 'createclub' my_school.school_code %}" class="btn text-info btn-sm">Create Club</a>
+  <a href= "{% url 'myclubview' my_school.school_code %}"class="btn text-info btn-sm" >Activities </a></p>
+
+</h3>
+  <hr> 
+  {% for item in myclubs %} 
+  <ul>
+    <li>
+    {{item.club_name }}
+  <a href="{% url 'createactivity' item.id %}" class="btn text-info btn-sm"> Create Activity</a>
+    </li>
+</ul>
+  
+
+{% endfor %}
+  <hr>
+
+          {% comment %} +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
+  
+
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                    <h3 >Recent photos</h3>
+
+                  
+                      <p class="mb-0"><a href="#" class="text-muted">View gallery</a>
+                      <a href="{% url 'add_photo' my_school.school_code %}" class="btn text-info btn-sm">Add Gallery</a>
+
+                      </p>
+                  
+                    </div>
+
+
+
+                    <div class="row g-2">
+
+
+
+{% comment %} ,,,,,,,,,,,,,,,,,,,,,,,,,,, {% endcomment %}
+   
+                   <div class="row row-cols-1 row-cols-md-4 g-2">
+                            
+                            {% for item in gallery %}
+                            <div class="col">
+                              <div class="card">
+                                <img src="{{ item.image.url }}" class="card-img-top " style='height: 200px; width: 100%; object-fit: contain'
+                                  alt="Hollywood Sign on The Hill" />
+                                <div class="card-body">
+                                    <h5 class="card-title">{{item.title}}</h5>
+                                    <p> {{item.caption}} </p>
+                                          <hr>
+
+                                                <div class="d-flex justify-content-start align-items-center">
+                                                      
+                                                        <p class="small mb-0"><i class="far fa-star fa-lg"></i> Photo taken on {{item.date_created}} </p>
+                                                        <span class="ms-1 me-4">|</span>
+
+                                                      
+                                              
+                                                        <span class="ms-1 me-3">|</span>
+                                                      
+                                                      {% comment %} <a href="#!">
+                                                        <img src="#" alt="avatar"
+                                                          class="img-fluid rounded-circle me-3" width="35">
+                                                      </a> {% endcomment %}
+                                                        <p class="mb-0"><a href="{% url 'gallery' item.school.school_code  %}" class="text-muted">View gallery</a></p>
+
+                                                 </div>   
+                                </div>
+
+                                              
+                                         
+                              </div>
+                              </div>
+
+                              {% endfor%}
+                            </div>
+
+                  </div>
+
+
+  </div>
+
+  </div>
+
+
+
+                              
+  
+</section> 
+
+
+</div>
+
+
+
+
+{%endblock main-content%}

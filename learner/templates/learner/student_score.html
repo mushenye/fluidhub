@@ -1,0 +1,51 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{% block title%}Student Score{% endblock title%}
+{% block main-content%}
+<div class="container">
+
+<h3> {% for x in my_school %}{{x.school_name}}{% endfor %}</h3>
+   
+  
+<table class="table">
+  <tr>
+    
+    <th scope="col">DATE CREATED</th>
+    <th scope="col">FULL NAME</th>
+    <th scope="col">ADM NO</th>
+    <th scope="col">DATE OF BIRTH</th>
+    <th scope="col">DATE JOINED</th>
+
+  </tr>
+  
+{% for student in students %}
+  <tr>
+
+  
+    <td scope="row">{{student.date_created}}</td>
+    <td scope="row"><a href= "{% url 'student-view' student.id %} ">{{student.fullname.capitalize}} </a></td>
+    <td scope="row">{{student.adm_no}}</td>
+    <td scope="row">{{student.date_of_birth}}</td>
+    <td scope="row">{{student.date_joined}}</td>
+   
+  </tr>
+
+ {% endfor %}
+
+</table>
+
+
+{% comment %} {% for score in student_progress%}
+ {{score.student}}
+ {{scrore.grade}}
+ {{score.year}}
+
+ 
+ {% endfor %} {% endcomment %}
+
+<hr>
+
+
+</div>
+
+{%endblock main-content%}

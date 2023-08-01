@@ -1,0 +1,40 @@
+{% extends 'learner/base.html'%}
+ {% load crispy_forms_tags %}
+{%block main-content%}
+{%block title%} Update profile {%endblock title%}
+
+<div class="container">
+    <hr>
+    <div class="row"> 
+        <h4>Profile update </h4>
+      <div class="col-sm-4">
+        <div  class="form-control border-info ">
+                <form method= "post" enctype="multipart/form-data">
+                        <div>
+                            
+                            {% csrf_token %}
+                            
+                                {{ form |crispy }}
+                                    
+
+                        </div>
+                    <div class="m-3">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
+
+                </form>
+
+
+            </div>
+      </div>
+      <div class="col-sm-8">
+      
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+
+      </div>
+    </div>
+  </div>
+
+
+{%endblock main-content%}

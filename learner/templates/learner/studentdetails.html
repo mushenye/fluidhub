@@ -1,0 +1,69 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Schools{%endblock title%}
+{%block main-content%}
+<div class="container">
+ 
+
+ 
+ <div class="row my-3">
+
+    <h2>Details</h2>
+<table class=" table">
+    <p>
+    <a href= "{% url 'result' student.id %} " class=" btn btn-primary btn-sm">Performance </a>
+    
+
+    <a href="{% url 'addtoclub' student.id %}" class="btn btn-primary btn-sm">Join Club</a>
+
+    <a href="{% url 'assess-view' student.id %}" class="btn btn-primary btn-sm">Assesment</a>
+    <a href="{% url 'add_result' student.id %}" class="btn btn-primary btn-sm">Add score</a>
+
+</p>
+<hr>
+<div class="col-sm-4">
+<tr>
+    <td scope="row"> Name: </td>
+   <td scope="row"> {{student.fullname.capitalize}}</td>
+</tr>
+
+<tr>
+    <td scope="row"> Addmision : </td>
+   <td scope="row"> {{student.adm_no}}</td>
+</tr>
+<tr>
+    <td scope="row"> Date joined : </td>
+   <td scope="row"> {{student.date_joined}}</td>
+</tr>
+   
+<tr>
+    <td scope="row"> Date of Birth : </td>
+   <td scope="row"> {{student.date_of_birth}}</td>
+</tr>
+<tr>
+    <td scope="row"> Grade : </td>
+   <td scope="row"> {{student.grade}}</td>
+</tr>
+<tr>
+    <td scope="row"> Grade teacher : </td>
+    <td scope="row">{% for item in teacher%}{{item.first_name}} {{item.last_name}}{% endfor %}</td>
+
+</td>
+{% for item in club%}
+<tr>
+    <td scope="row"> Clubs : </td>
+    <td scope="row">{{item.club_name}}</td>
+</td>
+{% endfor %}
+</div>
+</table>
+
+
+      
+</div>
+   <hr>
+ 
+
+ </div>
+
+ {%endblock main-content%}

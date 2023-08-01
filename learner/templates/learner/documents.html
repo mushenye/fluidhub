@@ -1,0 +1,31 @@
+{% extends 'learner/base.html'%}
+{% load crispy_forms_tags %}
+{%block main-content%}
+
+<div class="container">
+<h4> Documents<h4>
+<hr>
+<div class= "col-sm-4 mb-3 ">
+        <div   class="form-control border-info ">
+            
+
+        
+        <ul>
+            {% for document in documents %}
+            <li>
+                {{ document.description }} - 
+                <a href="{% url 'download' document.id %}">Download</a>
+            </li>
+            {% empty %}
+            <li>No documents found.</li>
+            {% endfor %}
+        </ul>
+
+
+
+
+    </div>
+      
+
+ </div>
+</div>

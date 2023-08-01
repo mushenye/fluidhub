@@ -1,0 +1,110 @@
+{% extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Student Report{%endblock title%}
+{%block main-content%}
+<div class="container">
+
+  
+     
+     <div >
+
+    <h2> Academic  Report  </h2>
+    <hr>
+       <h3>{{student.fullname.capitalize}} _
+      {{student.grade}}</h3>
+
+      
+    
+      {% comment %} <a href="{% url 'add_result' student.id %}" class="btn btn-primary">Add Score</a> {% endcomment %}
+         
+    </div>
+
+    <hr>
+
+    {% for item in result %}
+    <a href="{% url 'studentdetails' student.id %}" class="btn btn-info btn-sm">learner details</a>
+
+
+    <a href="{% url 'score_update' item.id %}" class="btn btn-info btn-sm">Edit Score</a>
+  
+  
+    <hr>
+    <h6>{{item.term}} _
+    {{item.year}}_
+    {{item.exam}}</h6>
+        <div class="col-sm-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+                <div class="table-responsive">
+  
+                            <table class="table">
+
+                              <tr> 
+                                <th scope="col">Subject</th>
+                                <th scope="col">Marks</th>
+                              </tr>
+                              
+                              <tr>
+                                <td scope="row">Mathmatics  </td>
+                                <td scope="row">{{item.Mathematics}} </td>
+                              </tr>
+
+                              <tr>
+                                <td scope="row">English Language </td>
+                                <td scope="row">{{item.English_language}}</td>
+
+                              </tr>
+                               <tr>
+                                <td scope="row">Kiswahili  </td>
+                                <td scope="row">{{item.Kiswahili}}</td>
+                              </tr>
+                               <tr>
+                                <td scope="row">Hygiene and Nutrition  </td>
+                                <td scope="row">{{item.Hygiene_and_Nutrition}}</td>
+                              </tr>
+                               <tr>
+                                <td scope="row">Environmental  </td>
+                                  <td scope="row">{{item.Environmental}}</td>
+                              </tr>
+                               <tr>
+                                <td scope="row">Art and Craft  </td>
+                                <td scope="row">{{item.Art_and_Craft}}</td>
+
+                              </tr>
+                                 <tr>
+                                <td scope="row">Music  </td>
+                                 <td scope="row">{{item.Music}}</td>
+                              </tr>
+
+                               <tr>
+                                <td scope="row">Movement  </td>
+                                <td scope="row">{{item.Movement}}</td>
+                              </tr>
+
+                               <tr>
+                                <td scope="row">Psycomotor  </td>
+                                <td scope="row">{{item.Psychomotorcreative}}</td>
+                              </tr>
+
+                                <tr>
+                                <td scope="row">Religious Education  </td>
+                                <td scope="row"> {{item.Religious_education}}  </td>
+                              </tr>   
+                              
+                              <tr> 
+                                <td scope="row"><strong>Total Score</strong>  </td>
+                                <td scope="row"> <strong>{{item.total_marks}}</strong>  </td> 
+                              </tr> 
+                            </table>
+            
+                    
+
+                    </div>
+                </div>     
+</div>
+</div>
+                      {% endfor %}
+
+</div>
+{%endblock main-content%}

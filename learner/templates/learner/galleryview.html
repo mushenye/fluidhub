@@ -1,0 +1,54 @@
+{% extends 'learner/base.html'%}
+{% load static%}
+{%block main-content%}
+
+<div class="container">
+
+    <section class="h-100 gradient-custom-2">
+           
+           
+        <div class="row row-cols-1 row-cols-md-4 g-2">
+
+        {% for item in gallery %}
+              <div class="col">
+                <div class="card">
+                  <img src="{{item.image.url}}" class="card-img-top " width="50" height= "250"
+                    alt="Hollywood Sign on The Hill" />
+                  <div class="card-body">
+                      <h5 class="card-title">{{item.title}}</h5>
+                      <p> {{item.caption}} </p>
+                            <hr>
+
+                                  <div class="d-flex justify-content-start align-items-center">
+                                        
+                                          <p class="small mb-0"><i class="far fa-star fa-lg"></i> Photo taken on {{item.date_created}}</p>
+                                          <span class="ms-1 me-4">|</span>
+
+                                        <p class="mb-0 text-capitalize"><i class="fas fa-cog me-2"></i> <strong
+                                            class="text-muted small">{{item.school.school_name.capitalize}} </strong></p>
+                                
+                                          <span class="ms-1 me-3">|</span>
+                                        
+                                        <a href="#!">
+                                          <img src="{{ item.school.profile.school_logo.url}}" alt="{% static 'avatar.jpg'%}"
+                                            class="img-fluid rounded-circle me-3" width="35">
+                                        </a>
+                                        
+                                      
+
+                                  </div>
+                          </div>
+                  </div>
+              </div>
+        {% endfor %}
+          </div>
+  
+</section> 
+
+
+</div>
+
+
+
+
+{%endblock main-content%}

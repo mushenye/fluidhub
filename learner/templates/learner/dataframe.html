@@ -1,0 +1,24 @@
+{%extends 'learner/base.html'%}
+{% load static %}
+{%block title%}Home{%endblock title%}
+
+{%block main-content%}
+<div class="container">
+    <div class="col-sm-6 offset-sm-3"> 
+
+        <h1>Welcome To FluidHub</h1>
+         
+       
+    </div>
+    <a href="/term_one_opener" class="btn btn-primary">Opener Exam</a>
+    <a href="/term_one_mid_term" class="btn btn-primary">Mid term Exam</a>
+    <a href="/term_one_end_term" class="btn btn-primary">Endterm</a>
+
+        {{df|safe}}
+
+
+</div>
+
+
+
+{%endblock main-content%}

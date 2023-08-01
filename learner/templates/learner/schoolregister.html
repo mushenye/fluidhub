@@ -1,0 +1,57 @@
+{%extends 'learner/base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block title%}Schoolregister{%endblock title%}
+
+{%block main-content%}
+<div class="row my-3 p-2">
+    <div class="col-sm-5 offset-sm-3 ">
+        <h3>Register your school</h3>
+        <hr>
+        <div class="card">
+        <h5 class="text-success text-center"> Note that you are only allowed to register one school with your account. To access the school you will also use the same account and passcode generated. </h5>
+        </div>
+        <form action="" method="post" novalidate class="shadow p-2">
+            {%csrf_token%}
+                {% for fm in form %}
+                {{fm.label_tag}}{{fm}} <small class="text-danger">{{fm.errors}}</small> <br>
+                {%endfor%}
+
+                <p class="alert alert-danger my-3">
+                    The passcode is auto-generated once. You are allowed to change it before you submit.
+                </p>
+            <input  type="submit" class=" btn btn-primary mt-4" value="submit">
+           
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors%}
+            <p class="alert alert-danger my-3">{{errors}}
+              
+            </p>
+            {%endfor%}
+            {%endif%}
+
+        </form>
+        {% for item in schoolcode %}
+        <h6 class="text-center text-success"> School added Succesfully  </h6>
+        <h1 class="card text-center" >{{item.passcode}}</h1>
+
+        <div class="card text-center">
+        <h5 class="text-danger "> Please keep this code before you proceed.</h5>
+            <h5> <strong>You will not be able to access your school without it</strong>
+         </h5></div>
+         <a href="{% url 'home' %}" class="btn btn-primary btn-sm text-right">Proceed</a>
+        <hr>
+       {% endfor%}
+
+
+
+    </div>
+
+  
+
+
+</div>
+
+
+
+{%endblock main-content%}
