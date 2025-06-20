@@ -76,7 +76,7 @@ class Student(models.Model):
     school =models.ForeignKey(School, on_delete =models.CASCADE)
     date_created=models.DateField(auto_now_add=True)
     first_name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=50)
+    last_namgti e=models.CharField(max_length=50)
     adm_no= models.IntegerField()
     date_of_birth= models.DateField()
     date_joined= models.DateField(auto_now=True)
